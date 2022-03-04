@@ -13077,7 +13077,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Import-the-data-for-AirBNB-Seattle-and-Clean-it-for-analysis-and-price-prediction">Import the data for AirBNB Seattle and Clean it for analysis and price prediction<a class="anchor-link" href="#Import-the-data-for-AirBNB-Seattle-and-Clean-it-for-analysis-and-price-prediction">&#182;</a></h1>
+<h1 id="Section-1:-Business-Understanding">Section 1: Business Understanding<a class="anchor-link" href="#Section-1:-Business-Understanding">&#182;</a></h1><h3 id="*-With-calendar-and-listings-data-from-airbnb-we-want-to-know-which-month-has-highest-and-lowest-occupancy-in-Seattle?">* With calendar and listings data from airbnb we want to know which month has highest and lowest occupancy in Seattle?<a class="anchor-link" href="#*-With-calendar-and-listings-data-from-airbnb-we-want-to-know-which-month-has-highest-and-lowest-occupancy-in-Seattle?">&#182;</a></h3><h3 id="*-Which-month-has-lowest-and-highest-prices-for-the-listings?">* Which month has lowest and highest prices for the listings?<a class="anchor-link" href="#*-Which-month-has-lowest-and-highest-prices-for-the-listings?">&#182;</a></h3><h3 id="*-What-are-the-different-factors/features-influencing-the-listings-price?">* What are the different factors/features influencing the listings price?<a class="anchor-link" href="#*-What-are-the-different-factors/features-influencing-the-listings-price?">&#182;</a></h3><h3 id="*-Which-area-in-Seattle-is-have-the-highest-and-lowest-occupancy?">* Which area in Seattle is have the highest and lowest occupancy?<a class="anchor-link" href="#*-Which-area-in-Seattle-is-have-the-highest-and-lowest-occupancy?">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -13119,6 +13119,13 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Section-2:-Data-Understanding">Section 2: Data Understanding<a class="anchor-link" href="#Section-2:-Data-Understanding">&#182;</a></h1><h3 id="Listings-and-Calendar-have-one-to-may-relationship">Listings and Calendar have one to may relationship<a class="anchor-link" href="#Listings-and-Calendar-have-one-to-may-relationship">&#182;</a></h3><h3 id="Listings-and-Reviews-also-have-one-to-many-relationship">Listings and Reviews also have one to many relationship<a class="anchor-link" href="#Listings-and-Reviews-also-have-one-to-many-relationship">&#182;</a></h3><h3 id="Listings-dataframe-has-91-columns,-and-we-need-to-extract-only-those-which-influence-price---id,-host_response_time,-host_response_rate,-accommodates,-bathrooms,-bedrooms,-beds,-price,-weekly_price,-monthly_price,-cleaning_fee,-extra_people,-minimum_nights,-review_scores_rating,-and-instant_bookable">Listings dataframe has 91 columns, and we need to extract only those which influence price - id, host_response_time, host_response_rate, accommodates, bathrooms, bedrooms, beds, price, weekly_price, monthly_price, cleaning_fee, extra_people, minimum_nights, review_scores_rating, and instant_bookable<a class="anchor-link" href="#Listings-dataframe-has-91-columns,-and-we-need-to-extract-only-those-which-influence-price---id,-host_response_time,-host_response_rate,-accommodates,-bathrooms,-bedrooms,-beds,-price,-weekly_price,-monthly_price,-cleaning_fee,-extra_people,-minimum_nights,-review_scores_rating,-and-instant_bookable">&#182;</a></h3><h3 id="All-price-columns-datatype-needs-to-be-change-to-numeric---Calendar-and-Listings">All price columns datatype needs to be change to numeric - Calendar and Listings<a class="anchor-link" href="#All-price-columns-datatype-needs-to-be-change-to-numeric---Calendar-and-Listings">&#182;</a></h3><h3 id="For-our-business-questions-we-may-not-even-require-Reviews-dataframe">For our business questions we may not even require Reviews dataframe<a class="anchor-link" href="#For-our-business-questions-we-may-not-even-require-Reviews-dataframe">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13254,6 +13261,488 @@ memory usage: 42.5+ MB
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[187]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[187]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>listing_url</th>
+      <th>scrape_id</th>
+      <th>last_scraped</th>
+      <th>name</th>
+      <th>summary</th>
+      <th>space</th>
+      <th>description</th>
+      <th>experiences_offered</th>
+      <th>neighborhood_overview</th>
+      <th>...</th>
+      <th>review_scores_value</th>
+      <th>requires_license</th>
+      <th>license</th>
+      <th>jurisdiction_names</th>
+      <th>instant_bookable</th>
+      <th>cancellation_policy</th>
+      <th>require_guest_profile_picture</th>
+      <th>require_guest_phone_verification</th>
+      <th>calculated_host_listings_count</th>
+      <th>reviews_per_month</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>241032</td>
+      <td>https://www.airbnb.com/rooms/241032</td>
+      <td>20160104002432</td>
+      <td>2016-01-04</td>
+      <td>Stylish Queen Anne Apartment</td>
+      <td>NaN</td>
+      <td>Make your self at home in this charming one-be...</td>
+      <td>Make your self at home in this charming one-be...</td>
+      <td>none</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>10.0</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>WASHINGTON</td>
+      <td>f</td>
+      <td>moderate</td>
+      <td>f</td>
+      <td>f</td>
+      <td>2</td>
+      <td>4.07</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>953595</td>
+      <td>https://www.airbnb.com/rooms/953595</td>
+      <td>20160104002432</td>
+      <td>2016-01-04</td>
+      <td>Bright &amp; Airy Queen Anne Apartment</td>
+      <td>Chemically sensitive? We've removed the irrita...</td>
+      <td>Beautiful, hypoallergenic apartment in an extr...</td>
+      <td>Chemically sensitive? We've removed the irrita...</td>
+      <td>none</td>
+      <td>Queen Anne is a wonderful, truly functional vi...</td>
+      <td>...</td>
+      <td>10.0</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>WASHINGTON</td>
+      <td>f</td>
+      <td>strict</td>
+      <td>t</td>
+      <td>t</td>
+      <td>6</td>
+      <td>1.48</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3308979</td>
+      <td>https://www.airbnb.com/rooms/3308979</td>
+      <td>20160104002432</td>
+      <td>2016-01-04</td>
+      <td>New Modern House-Amazing water view</td>
+      <td>New modern house built in 2013.  Spectacular s...</td>
+      <td>Our house is modern, light and fresh with a wa...</td>
+      <td>New modern house built in 2013.  Spectacular s...</td>
+      <td>none</td>
+      <td>Upper Queen Anne is a charming neighborhood fu...</td>
+      <td>...</td>
+      <td>10.0</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>WASHINGTON</td>
+      <td>f</td>
+      <td>strict</td>
+      <td>f</td>
+      <td>f</td>
+      <td>2</td>
+      <td>1.15</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7421966</td>
+      <td>https://www.airbnb.com/rooms/7421966</td>
+      <td>20160104002432</td>
+      <td>2016-01-04</td>
+      <td>Queen Anne Chateau</td>
+      <td>A charming apartment that sits atop Queen Anne...</td>
+      <td>NaN</td>
+      <td>A charming apartment that sits atop Queen Anne...</td>
+      <td>none</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>WASHINGTON</td>
+      <td>f</td>
+      <td>flexible</td>
+      <td>f</td>
+      <td>f</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>278830</td>
+      <td>https://www.airbnb.com/rooms/278830</td>
+      <td>20160104002432</td>
+      <td>2016-01-04</td>
+      <td>Charming craftsman 3 bdm house</td>
+      <td>Cozy family craftman house in beautiful neighb...</td>
+      <td>Cozy family craftman house in beautiful neighb...</td>
+      <td>Cozy family craftman house in beautiful neighb...</td>
+      <td>none</td>
+      <td>We are in the beautiful neighborhood of Queen ...</td>
+      <td>...</td>
+      <td>9.0</td>
+      <td>f</td>
+      <td>NaN</td>
+      <td>WASHINGTON</td>
+      <td>f</td>
+      <td>strict</td>
+      <td>f</td>
+      <td>f</td>
+      <td>1</td>
+      <td>0.89</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 92 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[188]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 3818 entries, 0 to 3817
+Data columns (total 92 columns):
+ #   Column                            Non-Null Count  Dtype  
+---  ------                            --------------  -----  
+ 0   id                                3818 non-null   int64  
+ 1   listing_url                       3818 non-null   object 
+ 2   scrape_id                         3818 non-null   int64  
+ 3   last_scraped                      3818 non-null   object 
+ 4   name                              3818 non-null   object 
+ 5   summary                           3641 non-null   object 
+ 6   space                             3249 non-null   object 
+ 7   description                       3818 non-null   object 
+ 8   experiences_offered               3818 non-null   object 
+ 9   neighborhood_overview             2786 non-null   object 
+ 10  notes                             2212 non-null   object 
+ 11  transit                           2884 non-null   object 
+ 12  thumbnail_url                     3498 non-null   object 
+ 13  medium_url                        3498 non-null   object 
+ 14  picture_url                       3818 non-null   object 
+ 15  xl_picture_url                    3498 non-null   object 
+ 16  host_id                           3818 non-null   int64  
+ 17  host_url                          3818 non-null   object 
+ 18  host_name                         3816 non-null   object 
+ 19  host_since                        3816 non-null   object 
+ 20  host_location                     3810 non-null   object 
+ 21  host_about                        2959 non-null   object 
+ 22  host_response_time                3295 non-null   object 
+ 23  host_response_rate                3295 non-null   object 
+ 24  host_acceptance_rate              3045 non-null   object 
+ 25  host_is_superhost                 3816 non-null   object 
+ 26  host_thumbnail_url                3816 non-null   object 
+ 27  host_picture_url                  3816 non-null   object 
+ 28  host_neighbourhood                3518 non-null   object 
+ 29  host_listings_count               3816 non-null   float64
+ 30  host_total_listings_count         3816 non-null   float64
+ 31  host_verifications                3818 non-null   object 
+ 32  host_has_profile_pic              3816 non-null   object 
+ 33  host_identity_verified            3816 non-null   object 
+ 34  street                            3818 non-null   object 
+ 35  neighbourhood                     3402 non-null   object 
+ 36  neighbourhood_cleansed            3818 non-null   object 
+ 37  neighbourhood_group_cleansed      3818 non-null   object 
+ 38  city                              3818 non-null   object 
+ 39  state                             3818 non-null   object 
+ 40  zipcode                           3811 non-null   object 
+ 41  market                            3818 non-null   object 
+ 42  smart_location                    3818 non-null   object 
+ 43  country_code                      3818 non-null   object 
+ 44  country                           3818 non-null   object 
+ 45  latitude                          3818 non-null   float64
+ 46  longitude                         3818 non-null   float64
+ 47  is_location_exact                 3818 non-null   object 
+ 48  property_type                     3817 non-null   object 
+ 49  room_type                         3818 non-null   object 
+ 50  accommodates                      3818 non-null   int64  
+ 51  bathrooms                         3802 non-null   float64
+ 52  bedrooms                          3812 non-null   float64
+ 53  beds                              3817 non-null   float64
+ 54  bed_type                          3818 non-null   object 
+ 55  amenities                         3818 non-null   object 
+ 56  square_feet                       97 non-null     float64
+ 57  price                             3818 non-null   object 
+ 58  weekly_price                      2009 non-null   object 
+ 59  monthly_price                     1517 non-null   object 
+ 60  security_deposit                  1866 non-null   object 
+ 61  cleaning_fee                      2788 non-null   object 
+ 62  guests_included                   3818 non-null   int64  
+ 63  extra_people                      3818 non-null   object 
+ 64  minimum_nights                    3818 non-null   int64  
+ 65  maximum_nights                    3818 non-null   int64  
+ 66  calendar_updated                  3818 non-null   object 
+ 67  has_availability                  3818 non-null   object 
+ 68  availability_30                   3818 non-null   int64  
+ 69  availability_60                   3818 non-null   int64  
+ 70  availability_90                   3818 non-null   int64  
+ 71  availability_365                  3818 non-null   int64  
+ 72  calendar_last_scraped             3818 non-null   object 
+ 73  number_of_reviews                 3818 non-null   int64  
+ 74  first_review                      3191 non-null   object 
+ 75  last_review                       3191 non-null   object 
+ 76  review_scores_rating              3171 non-null   float64
+ 77  review_scores_accuracy            3160 non-null   float64
+ 78  review_scores_cleanliness         3165 non-null   float64
+ 79  review_scores_checkin             3160 non-null   float64
+ 80  review_scores_communication       3167 non-null   float64
+ 81  review_scores_location            3163 non-null   float64
+ 82  review_scores_value               3162 non-null   float64
+ 83  requires_license                  3818 non-null   object 
+ 84  license                           0 non-null      float64
+ 85  jurisdiction_names                3818 non-null   object 
+ 86  instant_bookable                  3818 non-null   object 
+ 87  cancellation_policy               3818 non-null   object 
+ 88  require_guest_profile_picture     3818 non-null   object 
+ 89  require_guest_phone_verification  3818 non-null   object 
+ 90  calculated_host_listings_count    3818 non-null   int64  
+ 91  reviews_per_month                 3191 non-null   float64
+dtypes: float64(17), int64(13), object(62)
+memory usage: 2.7+ MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[189]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_reviews</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[189]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>listing_id</th>
+      <th>id</th>
+      <th>date</th>
+      <th>reviewer_id</th>
+      <th>reviewer_name</th>
+      <th>comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7202016</td>
+      <td>38917982</td>
+      <td>2015-07-19</td>
+      <td>28943674</td>
+      <td>Bianca</td>
+      <td>Cute and cozy place. Perfect location to every...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7202016</td>
+      <td>39087409</td>
+      <td>2015-07-20</td>
+      <td>32440555</td>
+      <td>Frank</td>
+      <td>Kelly has a great room in a very central locat...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7202016</td>
+      <td>39820030</td>
+      <td>2015-07-26</td>
+      <td>37722850</td>
+      <td>Ian</td>
+      <td>Very spacious apartment, and in a great neighb...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>7202016</td>
+      <td>40813543</td>
+      <td>2015-08-02</td>
+      <td>33671805</td>
+      <td>George</td>
+      <td>Close to Seattle Center and all it has to offe...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>7202016</td>
+      <td>41986501</td>
+      <td>2015-08-10</td>
+      <td>34959538</td>
+      <td>Ming</td>
+      <td>Kelly was a great host and very accommodating ...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[190]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_reviews</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 84849 entries, 0 to 84848
+Data columns (total 6 columns):
+ #   Column         Non-Null Count  Dtype 
+---  ------         --------------  ----- 
+ 0   listing_id     84849 non-null  int64 
+ 1   id             84849 non-null  int64 
+ 2   date           84849 non-null  object
+ 3   reviewer_id    84849 non-null  int64 
+ 4   reviewer_name  84849 non-null  object
+ 5   comments       84831 non-null  object
+dtypes: int64(3), object(3)
+memory usage: 3.9+ MB
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Section-3:-Prepare-Data">Section 3: Prepare Data<a class="anchor-link" href="#Section-3:-Prepare-Data">&#182;</a></h1><h3 id="Cleanup-calendar-and-listings-data-(details-below)">Cleanup calendar and listings data (details below)<a class="anchor-link" href="#Cleanup-calendar-and-listings-data-(details-below)">&#182;</a></h3>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13426,135 +13915,6 @@ memory usage: 74.4+ MB
 </div>
 </div>
 
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_listings</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 3818 entries, 0 to 3817
-Data columns (total 92 columns):
- #   Column                            Non-Null Count  Dtype  
----  ------                            --------------  -----  
- 0   id                                3818 non-null   int64  
- 1   listing_url                       3818 non-null   object 
- 2   scrape_id                         3818 non-null   int64  
- 3   last_scraped                      3818 non-null   object 
- 4   name                              3818 non-null   object 
- 5   summary                           3641 non-null   object 
- 6   space                             3249 non-null   object 
- 7   description                       3818 non-null   object 
- 8   experiences_offered               3818 non-null   object 
- 9   neighborhood_overview             2786 non-null   object 
- 10  notes                             2212 non-null   object 
- 11  transit                           2884 non-null   object 
- 12  thumbnail_url                     3498 non-null   object 
- 13  medium_url                        3498 non-null   object 
- 14  picture_url                       3818 non-null   object 
- 15  xl_picture_url                    3498 non-null   object 
- 16  host_id                           3818 non-null   int64  
- 17  host_url                          3818 non-null   object 
- 18  host_name                         3816 non-null   object 
- 19  host_since                        3816 non-null   object 
- 20  host_location                     3810 non-null   object 
- 21  host_about                        2959 non-null   object 
- 22  host_response_time                3295 non-null   object 
- 23  host_response_rate                3295 non-null   object 
- 24  host_acceptance_rate              3045 non-null   object 
- 25  host_is_superhost                 3816 non-null   object 
- 26  host_thumbnail_url                3816 non-null   object 
- 27  host_picture_url                  3816 non-null   object 
- 28  host_neighbourhood                3518 non-null   object 
- 29  host_listings_count               3816 non-null   float64
- 30  host_total_listings_count         3816 non-null   float64
- 31  host_verifications                3818 non-null   object 
- 32  host_has_profile_pic              3816 non-null   object 
- 33  host_identity_verified            3816 non-null   object 
- 34  street                            3818 non-null   object 
- 35  neighbourhood                     3402 non-null   object 
- 36  neighbourhood_cleansed            3818 non-null   object 
- 37  neighbourhood_group_cleansed      3818 non-null   object 
- 38  city                              3818 non-null   object 
- 39  state                             3818 non-null   object 
- 40  zipcode                           3811 non-null   object 
- 41  market                            3818 non-null   object 
- 42  smart_location                    3818 non-null   object 
- 43  country_code                      3818 non-null   object 
- 44  country                           3818 non-null   object 
- 45  latitude                          3818 non-null   float64
- 46  longitude                         3818 non-null   float64
- 47  is_location_exact                 3818 non-null   object 
- 48  property_type                     3817 non-null   object 
- 49  room_type                         3818 non-null   object 
- 50  accommodates                      3818 non-null   int64  
- 51  bathrooms                         3802 non-null   float64
- 52  bedrooms                          3812 non-null   float64
- 53  beds                              3817 non-null   float64
- 54  bed_type                          3818 non-null   object 
- 55  amenities                         3818 non-null   object 
- 56  square_feet                       97 non-null     float64
- 57  price                             3818 non-null   object 
- 58  weekly_price                      2009 non-null   object 
- 59  monthly_price                     1517 non-null   object 
- 60  security_deposit                  1866 non-null   object 
- 61  cleaning_fee                      2788 non-null   object 
- 62  guests_included                   3818 non-null   int64  
- 63  extra_people                      3818 non-null   object 
- 64  minimum_nights                    3818 non-null   int64  
- 65  maximum_nights                    3818 non-null   int64  
- 66  calendar_updated                  3818 non-null   object 
- 67  has_availability                  3818 non-null   object 
- 68  availability_30                   3818 non-null   int64  
- 69  availability_60                   3818 non-null   int64  
- 70  availability_90                   3818 non-null   int64  
- 71  availability_365                  3818 non-null   int64  
- 72  calendar_last_scraped             3818 non-null   object 
- 73  number_of_reviews                 3818 non-null   int64  
- 74  first_review                      3191 non-null   object 
- 75  last_review                       3191 non-null   object 
- 76  review_scores_rating              3171 non-null   float64
- 77  review_scores_accuracy            3160 non-null   float64
- 78  review_scores_cleanliness         3165 non-null   float64
- 79  review_scores_checkin             3160 non-null   float64
- 80  review_scores_communication       3167 non-null   float64
- 81  review_scores_location            3163 non-null   float64
- 82  review_scores_value               3162 non-null   float64
- 83  requires_license                  3818 non-null   object 
- 84  license                           0 non-null      float64
- 85  jurisdiction_names                3818 non-null   object 
- 86  instant_bookable                  3818 non-null   object 
- 87  cancellation_policy               3818 non-null   object 
- 88  require_guest_profile_picture     3818 non-null   object 
- 89  require_guest_phone_verification  3818 non-null   object 
- 90  calculated_host_listings_count    3818 non-null   int64  
- 91  reviews_per_month                 3191 non-null   float64
-dtypes: float64(17), int64(13), object(62)
-memory usage: 2.7+ MB
-</pre>
-</div>
 </div>
 
 </div>
@@ -13893,320 +14253,10 @@ memory usage: 477.4+ KB
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_reviews</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 84849 entries, 0 to 84848
-Data columns (total 6 columns):
- #   Column         Non-Null Count  Dtype 
----  ------         --------------  ----- 
- 0   listing_id     84849 non-null  int64 
- 1   id             84849 non-null  int64 
- 2   date           84849 non-null  object
- 3   reviewer_id    84849 non-null  int64 
- 4   reviewer_name  84849 non-null  object
- 5   comments       84831 non-null  object
-dtypes: int64(3), object(3)
-memory usage: 3.9+ MB
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_reviews</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>listing_id</th>
-      <th>id</th>
-      <th>date</th>
-      <th>reviewer_id</th>
-      <th>reviewer_name</th>
-      <th>comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>7202016</td>
-      <td>38917982</td>
-      <td>2015-07-19</td>
-      <td>28943674</td>
-      <td>Bianca</td>
-      <td>Cute and cozy place. Perfect location to every...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7202016</td>
-      <td>39087409</td>
-      <td>2015-07-20</td>
-      <td>32440555</td>
-      <td>Frank</td>
-      <td>Kelly has a great room in a very central locat...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7202016</td>
-      <td>39820030</td>
-      <td>2015-07-26</td>
-      <td>37722850</td>
-      <td>Ian</td>
-      <td>Very spacious apartment, and in a great neighb...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>7202016</td>
-      <td>40813543</td>
-      <td>2015-08-02</td>
-      <td>33671805</td>
-      <td>George</td>
-      <td>Close to Seattle Center and all it has to offe...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>7202016</td>
-      <td>41986501</td>
-      <td>2015-08-10</td>
-      <td>34959538</td>
-      <td>Ming</td>
-      <td>Kelly was a great host and very accommodating ...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_reviews</span><span class="p">[</span><span class="n">df_reviews</span><span class="o">.</span><span class="n">listing_id</span> <span class="o">==</span> <span class="mi">241032</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>listing_id</th>
-      <th>id</th>
-      <th>date</th>
-      <th>reviewer_id</th>
-      <th>reviewer_name</th>
-      <th>comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>46381</th>
-      <td>241032</td>
-      <td>682061</td>
-      <td>2011-11-01</td>
-      <td>479824</td>
-      <td>Bro</td>
-      <td>Excellent all the way around. \r\n\r\nMaija wa...</td>
-    </tr>
-    <tr>
-      <th>46382</th>
-      <td>241032</td>
-      <td>691712</td>
-      <td>2011-11-04</td>
-      <td>357699</td>
-      <td>Megan</td>
-      <td>Maija's apartment was a wonderful place to sta...</td>
-    </tr>
-    <tr>
-      <th>46383</th>
-      <td>241032</td>
-      <td>702999</td>
-      <td>2011-11-08</td>
-      <td>1285567</td>
-      <td>Marylee</td>
-      <td>one of the most pleasant stays i've had in my ...</td>
-    </tr>
-    <tr>
-      <th>46384</th>
-      <td>241032</td>
-      <td>717262</td>
-      <td>2011-11-14</td>
-      <td>647857</td>
-      <td>Graham</td>
-      <td>Maija's suite is beautiful, cozy and convenien...</td>
-    </tr>
-    <tr>
-      <th>46385</th>
-      <td>241032</td>
-      <td>730226</td>
-      <td>2011-11-19</td>
-      <td>1389821</td>
-      <td>Franka</td>
-      <td>Our stay was short and pleasant. With its own ...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>46583</th>
-      <td>241032</td>
-      <td>55971781</td>
-      <td>2015-12-07</td>
-      <td>16860585</td>
-      <td>Alexis</td>
-      <td>It was a wonderful stay! Beautiful, clean apar...</td>
-    </tr>
-    <tr>
-      <th>46584</th>
-      <td>241032</td>
-      <td>56765240</td>
-      <td>2015-12-17</td>
-      <td>2772019</td>
-      <td>Matt</td>
-      <td>Maija's place is wonderful and exactly as desc...</td>
-    </tr>
-    <tr>
-      <th>46585</th>
-      <td>241032</td>
-      <td>57116731</td>
-      <td>2015-12-22</td>
-      <td>33390495</td>
-      <td>Wendy</td>
-      <td>The apartment was perfect for our stay!  It wa...</td>
-    </tr>
-    <tr>
-      <th>46586</th>
-      <td>241032</td>
-      <td>57357433</td>
-      <td>2015-12-24</td>
-      <td>9664864</td>
-      <td>Vas</td>
-      <td>The home is a little tricky to find because of...</td>
-    </tr>
-    <tr>
-      <th>46587</th>
-      <td>241032</td>
-      <td>58298677</td>
-      <td>2016-01-02</td>
-      <td>11106274</td>
-      <td>Naras</td>
-      <td>We never met Maija, but the place was wonderfu...</td>
-    </tr>
-  </tbody>
-</table>
-<p>207 rows × 6 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Analyse-the-Data-through-various-Plots">Analyse the Data through various Plots<a class="anchor-link" href="#Analyse-the-Data-through-various-Plots">&#182;</a></h1>
+<h1 id="Section-4-&amp;-5:-Model-Data-and-Results">Section 4 &amp; 5: Model Data and Results<a class="anchor-link" href="#Section-4-&amp;-5:-Model-Data-and-Results">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14568,13 +14618,50 @@ The r-squared score for the model using only quantitative variables was 0.497334
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[186]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!!</span>jupyter nbconvert *.ipynb
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[186]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;[NbConvertApp] Converting notebook AirBnB_Project3.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 511264 bytes to AirBnB_Project3.html&#39;,
+ &#39;[NbConvertApp] Converting notebook NLS.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 349340 bytes to NLS.html&#39;,
+ &#39;[NbConvertApp] Converting notebook Pandas_Parctise.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 359737 bytes to Pandas_Parctise.html&#39;,
+ &#39;[NbConvertApp] Converting notebook PySpark-Sheet-1.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 282265 bytes to PySpark-Sheet-1.html&#39;,
+ &#39;[NbConvertApp] Converting notebook Python_Practice.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 286051 bytes to Python_Practice.html&#39;,
+ &#39;[NbConvertApp] Converting notebook Storing_data.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 333066 bytes to Storing_data.html&#39;,
+ &#39;[NbConvertApp] Converting notebook data-wrangling-template.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 977946 bytes to data-wrangling-template.html&#39;,
+ &#39;[NbConvertApp] Converting notebook finding_donors.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 396571 bytes to finding_donors.html&#39;,
+ &#39;[NbConvertApp] Converting notebook wrangle_act.ipynb to html&#39;,
+ &#39;[NbConvertApp] Writing 279915 bytes to wrangle_act.html&#39;]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
