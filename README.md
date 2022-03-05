@@ -1,3 +1,10 @@
+CONTENTS OF THR FILE
+=======================
+* Introduction
+* Requirements
+* What's Included
+* File Description
+* Licensing, Author(s) and Acknowledgement(s)
 The project is to find the factors responsible for price of a property listing on AirBNB within Seattle (US), and predict the price based on 
 available data. 
 
