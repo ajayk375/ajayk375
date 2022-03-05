@@ -45,7 +45,7 @@ Directory: airbnb_data - This directory contains all the data files required for
 
 Licensing, Author(s) and Acknowledgement(s)
 --------------------------------------------
-Licencing: Open Source
+Licensing: Open Source and available in public GitHub Repository - https://github.com/ajayk375/ajayk375
 
 Author: Ajay Kumar
 
