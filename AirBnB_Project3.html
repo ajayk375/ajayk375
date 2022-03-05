@@ -13966,7 +13966,11 @@ memory usage: 74.4+ MB
 <div class="prompt input_prompt">In&nbsp;[161]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fill_mode</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">col</span><span class="p">:</span><span class="n">col</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Lambda function to fill nan value mode value of aparticular column</span>
+<span class="sd">Impute values for beds, bathrooms and bedrooms </span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">fill_mode</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">col</span><span class="p">:</span><span class="n">col</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">df_listings_sub</span><span class="p">[[</span><span class="s1">&#39;beds&#39;</span><span class="p">,</span> <span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;bedrooms&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[[</span><span class="s1">&#39;beds&#39;</span><span class="p">,</span> <span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;bedrooms&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_mode</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
@@ -14011,7 +14015,13 @@ memory usage: 74.4+ MB
 <div class="prompt input_prompt">In&nbsp;[163]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">replace_percent</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Lambda function which receive a value checks if it&#39;s a string, replaces any % characters and convert it to Float</span>
+<span class="sd">else return the same value</span>
+<span class="sd">Input: x </span>
+<span class="sd">Output: Float(x)/100 if String else x</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">replace_percent</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
 <span class="n">df_listings_sub</span><span class="p">[</span><span class="s1">&#39;host_response_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="o">.</span><span class="n">host_response_rate</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">replace_percent</span><span class="p">)</span>
 </pre></div>
 
@@ -14025,7 +14035,12 @@ memory usage: 74.4+ MB
 <div class="prompt input_prompt">In&nbsp;[170]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">replace_review_per</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mf">100.0</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Lambda function which receive a float value and return a value between 0 and 1 (non-percentage)</span>
+<span class="sd">Input: x </span>
+<span class="sd">Output: x/100</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">replace_review_per</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span>
 <span class="n">df_listings_sub</span><span class="p">[</span><span class="s1">&#39;review_scores_rating&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[</span><span class="s1">&#39;review_scores_rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">replace_review_per</span><span class="p">)</span>
 </pre></div>
 
@@ -14272,8 +14287,9 @@ memory usage: 477.4+ KB
 <div class="prompt input_prompt">In&nbsp;[178]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Analyze the 2016 Occupancy month over month</span>
-
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Analyze the 2016 Occupancy month over month</span>
+<span class="sd">&quot;&quot;&quot;</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span>  <span class="s1">&#39;blue&#39;</span><span class="p">,</span>
@@ -14336,7 +14352,10 @@ memory usage: 477.4+ KB
 <div class="prompt input_prompt">In&nbsp;[179]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_calendar_2016</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">month</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">base_color</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Analyze the price over period of time</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_calendar_2016</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">month</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">base_color</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average price&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Months&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average price per month&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font</span><span class="p">);</span>
@@ -14389,7 +14408,10 @@ memory usage: 477.4+ KB
 <div class="prompt input_prompt">In&nbsp;[180]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">listing_corr</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Find the correlation of different features with price</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">listing_corr</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 
 <span class="n">kot</span> <span class="o">=</span> <span class="n">listing_corr</span><span class="p">[</span><span class="n">listing_corr</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)]</span>
 
@@ -14444,7 +14466,10 @@ memory usage: 477.4+ KB
 <div class="prompt input_prompt">In&nbsp;[181]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cat_order</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[</span><span class="s1">&#39;host_response_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Analyze the host response time w.r.t. all the listings</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">cat_order</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[</span><span class="s1">&#39;host_response_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;host_response_time&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">base_color</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">cat_order</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The most host response time&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font</span><span class="p">);</span>
 </pre></div>
@@ -14495,7 +14520,10 @@ memory usage: 477.4+ KB
 <div class="prompt input_prompt">In&nbsp;[185]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="n">cat_order</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[</span><span class="s1">&#39;zipcode&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;zipcode&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">base_color</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">cat_order</span><span class="p">)</span>
@@ -14541,7 +14569,8 @@ memory usage: 477.4+ KB
 <div class="prompt input_prompt">In&nbsp;[141]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[[</span><span class="s1">&#39;accommodates&#39;</span><span class="p">,</span> <span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;beds&#39;</span><span class="p">,</span> <span class="s1">&#39;bedrooms&#39;</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># </span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[[</span><span class="s1">&#39;accommodates&#39;</span><span class="p">,</span> <span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;beds&#39;</span><span class="p">,</span> <span class="s1">&#39;bedrooms&#39;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_listings_sub</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
 </pre></div>
 
@@ -14618,7 +14647,7 @@ The r-squared score for the model using only quantitative variables was 0.497334
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[186]:</div>
+<div class="prompt input_prompt">In&nbsp;[191]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!!</span>jupyter nbconvert *.ipynb
@@ -14634,14 +14663,14 @@ The r-squared score for the model using only quantitative variables was 0.497334
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[186]:</div>
+    <div class="prompt output_prompt">Out[191]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>[&#39;[NbConvertApp] Converting notebook AirBnB_Project3.ipynb to html&#39;,
- &#39;[NbConvertApp] Writing 511264 bytes to AirBnB_Project3.html&#39;,
+ &#39;[NbConvertApp] Writing 518112 bytes to AirBnB_Project3.html&#39;,
  &#39;[NbConvertApp] Converting notebook NLS.ipynb to html&#39;,
  &#39;[NbConvertApp] Writing 349340 bytes to NLS.html&#39;,
  &#39;[NbConvertApp] Converting notebook Pandas_Parctise.ipynb to html&#39;,
