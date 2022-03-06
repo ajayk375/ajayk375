@@ -50,6 +50,7 @@ We were able to find answers to some of the business questions we had initially,
 listings price are highest during the year, occupancy remains at lowest levels.
 
 Occupancy in Seattle Airbnb listings remains lowest during December and highest during January
+![Occupancy Rate]Screenshot 2022-03-04 at 17.27.47
 
 
 Price of the listings are consistently high from June until December, and price is at peak during December and cheapest during January
