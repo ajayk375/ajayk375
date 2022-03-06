@@ -4,6 +4,7 @@ CONTENTS OF THE FILE
 * Requirements
 * What's Included
 * File Description
+* Summary of results
 * Licensing, Author(s) and Acknowledgement(s)
 
 
@@ -42,6 +43,16 @@ File: AirBnB_Project3.html - This file is the html version of Jupyter notebook.
 File: README.md - Contains information about the project and GitHub Repo structure.
 
 Directory: airbnb_data - This directory contains all the data files required for the project.
+
+Summary of results
+--------------------
+We were able to find answers to some of the business questions we had initially, and the most interesting finding was about the time period when 
+listings price are highest during the year, occupancy remains at lowest levels.
+
+Occupancy in Seattle Airbnb listings remains lowest during December and highest during January
+
+
+Price of the listings are consistently high from June until December, and price is at peak during December and cheapest during January
 
 Licensing, Author(s) and Acknowledgement(s)
 --------------------------------------------
