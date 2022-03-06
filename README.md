@@ -49,11 +49,23 @@ Summary of results
 We were able to find answers to some of the business questions we had initially, and the most interesting finding was about the time period when 
 listings price are highest during the year, occupancy remains at lowest levels.
 
-Occupancy in Seattle Airbnb listings remains lowest during December and highest during January
-![Occupancy Rate]Screenshot 2022-03-04 at 17.27.47
+Occupancy in Seattle Airbnb listings remains lowest during December and highest during January which is clearly noticed in following plot -
 
+![Occupancy Rate during year 2016](https://github.com/ajayk375/ajayk375/blob/master/Screenshot%202022-03-04%20at%2017.32.56.png)
 
-Price of the listings are consistently high from June until December, and price is at peak during December and cheapest during January
+Price of the listings are consistently high from June until December, and price is at peak during December and cheapest during January. This clearly visible
+from the following plot -
+
+![Average Price during 2016](https://github.com/ajayk375/ajayk375/blob/master/Screenshot%202022-03-04%20at%2017.27.47.png)
+
+We also noticed that following features influence listings price the most are mumber of bathrooms and bedrooms in the listing. Following 
+plot reflects that finding -
+
+![Features impacting listings price](https://github.com/ajayk375/ajayk375/blob/master/Screenshot%202022-03-05%20at%2017.14.12.png)
+
+For futher details, please checkout my blog on Medium - 
+
+https://medium.com/@ajay1.kumar/another-data-science-project-3cd7b2eb476b
 
 Licensing, Author(s) and Acknowledgement(s)
 --------------------------------------------
