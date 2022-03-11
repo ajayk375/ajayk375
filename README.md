@@ -1,14 +1,14 @@
 CONTENTS OF THE FILE
 =======================
-* Introduction
-* Requirements
-* What's Included
-* File Description
-* Summary of results
-* Licensing, Author(s) and Acknowledgement(s)
+* [ Introduction ](#intro)
+* [ Requirements ](#reqd)
+* [ What's Included ](#include)
+* [ File Description ](#desc)
+* [ Summary of results ](#summary)
+* [ Licensing, Author(s) and Acknowledgement(s) ](#acknow)
 
-
-Introduction
+<a name="intro"></a>
+## Introduction
 -------------
 The project is to find the factors responsible for price of a property listing on AirBNB within Seattle (US), and predict the price based on 
 available data. There are few more business questions we are trying to answer,
@@ -17,7 +17,8 @@ available data. There are few more business questions we are trying to answer,
 3. What are the different features/factors having influence on price?
 4. What are the areas in Seattle with most and least occupancy rate?
 
-Requirements
+<a name="reqd"></a>
+## Requirements
 -------------
 To analyze and prepare data we have used Jupyter Notebook and following libraries:
 Pandas
@@ -26,14 +27,16 @@ Sklearn
 Seaborn
 Matplotlib
 
-What's Included
+<a name="include"></a>
+## What's Included
 ----------------
 1. Directory: airbnb_data containing data from airbnb
 2. File: AirBnB_Project3.ipnyb 
 3. File: AirBnB_Project3.html
 4. File: README.md
 
-File Description
+<a name="desc"></a>
+## File Description
 -----------------
 File: AirBnB_Project3.ipynb - The files contains all the steps to predict the price of a listing. File also contains proper comments to 
 understand what each step is trying to accomplish.
@@ -44,7 +47,8 @@ File: README.md - Contains information about the project and GitHub Repo structu
 
 Directory: airbnb_data - This directory contains all the data files required for the project.
 
-Summary of results
+<a name="summary"></a>
+## Summary of results
 --------------------
 We were able to find answers to some of the business questions we had initially, and the most interesting finding was about the time period when 
 listings price are highest during the year, occupancy remains at lowest levels.
@@ -67,7 +71,8 @@ For futher details, please checkout my blog on Medium -
 
 https://medium.com/@ajay1.kumar/another-data-science-project-3cd7b2eb476b
 
-Licensing, Author(s) and Acknowledgement(s)
+<a name="acknow"></a>
+## Licensing, Author(s) and Acknowledgement(s)
 --------------------------------------------
 Licensing: Open Source and available in public GitHub Repository - https://github.com/ajayk375/ajayk375
 
