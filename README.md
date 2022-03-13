@@ -9,7 +9,6 @@ CONTENTS OF THE FILE
 
 <a name="intro"></a>
 ## Introduction
--------------
 The project is to find the factors responsible for price of a property listing on AirBNB within Seattle (US), and predict the price based on 
 available data. There are few more business questions we are trying to answer,
 1. What months in year 2016 had highest and lowest occupancy rate?
@@ -19,7 +18,6 @@ available data. There are few more business questions we are trying to answer,
 
 <a name="reqd"></a>
 ## Requirements
--------------
 To analyze and prepare data we have used Jupyter Notebook and following libraries:
 Pandas
 Numpy
@@ -29,7 +27,6 @@ Matplotlib
 
 <a name="include"></a>
 ## What's Included
-----------------
 1. Directory: airbnb_data containing data from airbnb
 2. File: AirBnB_Project3.ipnyb 
 3. File: AirBnB_Project3.html
@@ -37,7 +34,6 @@ Matplotlib
 
 <a name="desc"></a>
 ## File Description
------------------
 File: AirBnB_Project3.ipynb - The files contains all the steps to predict the price of a listing. File also contains proper comments to 
 understand what each step is trying to accomplish.
 
@@ -49,7 +45,6 @@ Directory: airbnb_data - This directory contains all the data files required for
 
 <a name="summary"></a>
 ## Summary of results
---------------------
 We were able to find answers to some of the business questions we had initially, and the most interesting finding was about the time period when 
 listings price are highest during the year, occupancy remains at lowest levels.
 
@@ -73,7 +68,6 @@ https://medium.com/@ajay1.kumar/another-data-science-project-3cd7b2eb476b
 
 <a name="acknow"></a>
 ## Licensing, Author(s) and Acknowledgement(s)
---------------------------------------------
 Licensing: Open Source and available in public GitHub Repository - https://github.com/ajayk375/ajayk375
 
 Author: Ajay Kumar
